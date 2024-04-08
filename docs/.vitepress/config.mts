@@ -2,16 +2,16 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'ru-RU',
-  title: "Descience",
+  title: "Каталог Макеевки",
   head: [
     ['link', { rel: 'icon', href: 'favicon.ico' }],
     // Вставляем предоставленный код для Google Tag Manager
-    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-9EYSRQDKKF' }],
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-J9P9CXR5LP'}],
     ['script', {}, `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-9EYSRQDKKF');
+      gtag('config', 'G-J9P9CXR5LP');
     `]
   ],
   description: "Арсенал дизайнера",
@@ -19,26 +19,17 @@ export default defineConfig({
   themeConfig: {
     logo: 'logo.svg',
     footer: {
-      copyright: 'Made with ❤️ <a href="https://instagram.com/stepanov.go">StepanovGo</a>'
+      copyright: 'Сделано с Любовью ❤️ <a href="https://t.me/+VtNU8Fj_9W1lYzdi">Блог Макеевки</a>'
     },
     nav: [
-      { text: 'Связаться', link: 'https://t.me/stepanovgg' },
-      { text: 'Помочь проекту', link: 'https://t.me/+fVfG-UWo2yg5ZmE6' }
+      { text: 'Связаться', link: 'https://t.me/stepanovgg' }
     ],
     sidebar: {
       '/db/': [
         {
           text: 'Арсенал дизайнера',
           items: [
-            { text: '💭 Вдохновение', link: '/db/inspire' },
-            { text: '✒️ Иллюстрации', link: '/db/vector' },
-            { text: '⭐️ Иконки', link: '/db/icons' },
-            { text: '💻 Мокапы', link: '/db/mockups' },
-            { text: '🐳 UI/UX-Киты', link: '/db/uxui' },
-            { text: '🆎 Шрифты', link: '/db/fonts' },
-            { text: '📷 Фотостоки', link: '/db/photostock' },
-            { text: '🎥 Видеостоки', link: '/db/videostock' },
-            { text: '🛠  Figma / XD / Sketch', link: '/db/figma' }
+            { text: '💭 Тест', link: '/db/inspire' }
           ]
         },
         {
