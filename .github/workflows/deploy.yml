@@ -8,7 +8,7 @@ on:
   push:
     branches:
       - main
-    # 只在下列路径变更时触
+    # 只在下列路径变更时触发
     paths:
       - 'docs/**'
       - 'package.json'
@@ -49,8 +49,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      # 打包静态文
+      # 打包静态文件
       - name: Build
+        env:
+          APP_BASE_PATH: /${{ github.repository }}
         run: pnpm install && pnpm run build
 
       # 部署
