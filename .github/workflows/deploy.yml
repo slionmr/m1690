@@ -34,9 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v3 # Uncomment this if you're using pnpm
-      # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
+          fetch-depth: 0
 
       # 安装 pnpm
       - name: Install pnpm
@@ -54,7 +52,7 @@ jobs:
       # 打包静态文件
       - name: Build
         env:
-          APP_BASE_PATH: /
+          APP_BASE_PATH: ${{ github.repository }}
         run: pnpm install && pnpm run build
 
       # 部署
@@ -65,16 +63,3 @@ jobs:
           branch: gh-pages
           # 静态文件所在目录
           folder: dist
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
