@@ -6,7 +6,6 @@ outline: [2, 3, 4]
 <script setup>
 import { NAV_DATA } from './data'
 </script>
-<style src="../style/index.scss"></style>
 
 # Еда и продукты
 Каталог сервисов и служб осуществляющих доставку еды и продуктов питания <br/>
