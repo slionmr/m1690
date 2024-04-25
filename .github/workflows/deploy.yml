@@ -31,8 +31,8 @@ env:
 
 # 任务
 jobs:
-  build-and-deploy:
-    # 服务器环境：最新版 ubuntu
+  build:
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -71,7 +71,7 @@ jobs:
       - name: Build
         env:
           APP_BASE_PATH: /${{ github.repository }}
-        run: pnpm install && pnpm run build
+        run: npm install && npm run build
 
       # 设置 ??? 版本
       - name: Upload artifact
@@ -80,10 +80,14 @@ jobs:
         path: docs/.vitepress/dist
 
       # 部署
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          # GitHub Pages 读取的分支
-          branch: gh-pages
-          # 静态文件所在目录
-          folder: dist
+  deploy:
+    environment:
+      name: github-pages
+
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
