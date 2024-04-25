@@ -5,7 +5,7 @@ import { head, nav, sidebar } from './configs'
 
 export default defineConfig({
   outDir: '../dist',
-  base: '/m1690/',
+  base: '/',
 
   lang: 'ru-RU',
   title: 'M1690',
