@@ -32,7 +32,7 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -44,7 +44,7 @@ jobs:
 
       # 设置 node 版本
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
@@ -52,12 +52,12 @@ jobs:
       # 打包静态文件
       - name: Build
         env:
-          APP_BASE_PATH: /m1690
+          APP_BASE_PATH: /m1690/
         run: pnpm install && pnpm run build
 
       # 部署
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v3
+        uses: JamesIves/github-pages-deploy-action@v
         with:
           # GitHub Pages 读取的分支
           branch: gh-pages
