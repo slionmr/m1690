@@ -50,16 +50,14 @@ jobs:
           cache: 'pnpm'
 
       # 打包静态文件
-      - name: Build
-        env:
-          APP_BASE_PATH: /m1690/
-        run: pnpm install && pnpm run build
-
-      # 部署
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          # GitHub Pages 读取的分支
-          branch: gh-pages
-          # 静态文件所在目录
-          folder: dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
