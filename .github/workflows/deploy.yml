@@ -7,10 +7,10 @@ on:
   # push 到指定分支
   push:
     branches: [main]
+    # 只在下列路径变更时触发
     paths:
       - 'docs/**'
       - 'package.json'
-    workflow_dispatch:
 
 # 设置权限
 permissions:
@@ -22,29 +22,15 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# 设置上海时区
 env:
   TZ: Asia/Shanghai
 
 # 任务
 jobs:
-  build:
+  build-and-deploy:
+    # 服务器环境：最新版 ubuntu
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci # or pnpm install / yarn install / bun install
-      - name: Build with VitePress
-        run: npm run docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
     strategy:
       matrix:
         node-version: [20]
@@ -55,23 +41,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 安装 pnpm
+      # 安装 pnp
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 8
 
-    - name: Setup Node
+      # 设置 node 版本
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm # or pnpm / yarn
+          cache: 'npm'
 
       # 打包静态文件
       - name: Build
         env:
-          url: ${{ steps.deployment.outputs.page_url }}
-        run: pnpm install && pnpm run build
+          APP_BASE_PATH: /${{ github.repository }}
+        run: npm install && npm run build
 
       # 部署
       - name: Deploy
