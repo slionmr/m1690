@@ -28,7 +28,6 @@ env:
 # 任务
 jobs:
   build:
-    # 服务器环境：最新版 ubuntu
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
