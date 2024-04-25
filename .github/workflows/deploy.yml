@@ -36,7 +36,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 安装 pnp
+      # 安装 pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -57,7 +57,7 @@ jobs:
 
       # 部署
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           # GitHub Pages 读取的分支
           branch: gh-pages
