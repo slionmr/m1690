@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
   # push 到指定分支
   push:
-    branches:
-      - main
+    branches: [main]
     # 只在下列路径变更时触发
     paths:
       - 'docs/**'
@@ -15,7 +14,13 @@ on:
 
 # 设置权限
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 # 设置上海时区
 env:
@@ -32,9 +37,30 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm # or pnpm / yarn
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install dependencies
+        run: npm ci # or pnpm install / yarn install / bun install
+
+      - name: Build with VitePress
+        run: npm run build # or pnpm docs:build / yarn docs:build / bun run docs:build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+        with:
+        path: docs/.vitepress/dist
 
       # 安装 pnpm
       - name: Install pnpm
