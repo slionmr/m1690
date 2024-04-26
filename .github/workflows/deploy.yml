@@ -4,7 +4,7 @@ name: GitHub Actions Build and Deploy
 on:
   # 手动触发
   workflow_dispatch:
-  # push 
+  # push 到指定分支
   push:
     branches:
       - main
@@ -36,17 +36,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      # 安装 pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       # 设置 node 版本
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: 'pnpm'
 
       # 打包静态文件
       - name: Build
         env:
-          APP_BASE_PATH: /
+          APP_BASE_PATH: /${{ github.repository }}
         run: npm install && npm run build
 
       # 部署
