@@ -48,7 +48,7 @@ head: [
             { text: '🥗 Еда и продукты', link: '/catalog/food/' },
             { text: '🚕 Такси', link: '/catalog/taxi/' },
             { text: '🚚 Эвакуаторы', link: '/catalog/evacuation/' },
-            { text: '🛠 Авторазборки', link: '/catalog/carpartsby/' },
+            { text: '🏖 Куда пойти?', link: '/catalog/chillout/' },
             { text: 'Скоро новый раздел' }
           ]
         }
@@ -71,9 +71,9 @@ head: [
       copyright: 'Made with ❤️ <a href="https://instagram.com/stepanov.go">StepanovGo</a>'
     },
 
-    darkModeSwitchLabel: '外观',
-    returnToTopLabel: '返回顶部',
-    lastUpdatedText: '上次更新',
+    darkModeSwitchLabel: 'Тема',
+    returnToTopLabel: 'Вернуться',
+    lastUpdatedText: 'Обновление',
 
     docFooter: {
       prev: 'Назад',
@@ -81,7 +81,7 @@ head: [
     },
 
     visitor: {
-      badgeId: 'maomao1996.vitepress-nav-template',
+      badgeId: 'slionmr.m1690',
     },
   },
 
