@@ -45,10 +45,10 @@ head: [
         {
           text: 'Каталог',
           items: [
+            { text: '🏖 Куда пойти?', link: '/catalog/chillout/' },
             { text: '🥗 Еда и продукты', link: '/catalog/food/' },
             { text: '🚕 Такси', link: '/catalog/taxi/' },
             { text: '🚚 Эвакуаторы', link: '/catalog/evacuation/' },
-            { text: '🏖 Куда пойти?', link: '/catalog/chillout/' },
             { text: 'Скоро новый раздел' }
           ]
         }
