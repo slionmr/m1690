@@ -55,7 +55,29 @@ head: [
       ]
     },
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: 'Поиск',
+                buttonAriaLabel: 'Поиск'
+              },
+              modal: {
+                noResultsText: 'Нет результатов по запросу',
+                resetButtonTitle: 'Сбросить',
+                footer: {
+                  selectText: 'для выбора',
+                  navigateText: 'для навигации',
+                  closeText: 'закрыть'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     },
     
     outline: {
@@ -68,7 +90,7 @@ head: [
     ],
 
     footer: {
-      copyright: 'Made with ❤️ <a href="https://instagram.com/stepanov.go">StepanovGo</a>'
+      copyright: 'Блог Макеевки ❤️ <a href="https://t.me/+a_4nT9Dwj5M4NDJi">M1690</a>'
     },
 
     darkModeSwitchLabel: 'Тема',
