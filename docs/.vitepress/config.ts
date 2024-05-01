@@ -30,9 +30,14 @@ export default defineConfig({
   markdown: {
     lineNumbers: true,
   },
+  
+  image: {
+    lazyLoading: true
+  },
 
   themeConfig: {
     i18nRouting: false,
+
 
     logo: '/logo.png',
 
