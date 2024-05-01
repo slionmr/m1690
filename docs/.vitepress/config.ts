@@ -13,8 +13,8 @@ export default defineConfig({
   lang: 'ru-RU',
   title: 'M1690',
   description: "Самый большой каталог Макеевки и Донбасса",
-head: [
-    ['link', { rel: 'icon', href: 'favicon.ico' }],
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-9EYSRQDKKF' }],
     ['script', {}, `
       window.dataLayer = window.dataLayer || [];
@@ -49,7 +49,7 @@ head: [
             { text: '🥗 Еда и продукты', link: '/catalog/food/' },
             { text: '🚕 Такси', link: '/catalog/taxi/' },
             { text: '🚚 Эвакуаторы', link: '/catalog/evacuation/' },
-            { text: 'Скоро новый раздел' }
+            { text: 'Скоро новый раздел', link: '#' }
           ]
         }
       ]
@@ -77,7 +77,6 @@ head: [
           }
         }
       }
-    },
     },
     
     outline: {
@@ -111,4 +110,3 @@ head: [
     plugins: [MarkdownPreview()],
   },
 })
-
